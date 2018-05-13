@@ -11,23 +11,21 @@ DockerImage="flowblade-1.16:latest"
 CPUS="3"
 MEM="4g"
 
+# For ALSA to work ensure uid/gid's are same inside container
 
   docker run --rm -it \
-       --cpus=${CPUS} \
-       --memory=${MEM} \
-       --user ${UID}:${UID} \
-       -v /tmp/.X11-unix:/tmp/.X11-unix \
-       -e DISPLAY=unix$DISPLAY \
-       --device /dev/dri \
-       -v ${PWD}:/workdir \
-       --name Flowblade \
-       -v /etc/passwd:/etc/passwd:ro \
-       -v /etc/group:/etc/group:ro \
-       -v ${PWD}/fbhome/:/home/${USER}/:rw \
-       --device /dev/snd \
-       --group-add audio \
-       -v /dev/shm:/dev/shm \
+      --cpus=${CPUS} \
+      --memory=${MEM} \
+      --user ${UID}:${UID} \
+      -v /tmp/.X11-unix:/tmp/.X11-unix \
+      -e DISPLAY=unix$DISPLAY \
+      --device /dev/dri \
+      --name Flowblade \
+      -v /etc/passwd:/etc/passwd:ro \
+      -v /etc/group:/etc/group:ro \
+      -v ${PWD}/fbwork/fbhome/:/home/${USER}/:rw \
+      -v ${PWD}/fbwork/:/workdir \
+      --device /dev/snd \
+      --group-add audio \
+      -v /dev/shm:/dev/shm \
     ${DockerImage}
-
-##        -v /dev/shm:/dev/shm \
-
