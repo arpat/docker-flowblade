@@ -11,13 +11,15 @@ The flowblade Video Editor, in docker.
 
 - Build the docker image with `build.sh`
 
-- Run with `run.sh`
+- `run.sh` starts on local Xorg, tested on Ubuntu 16.04
 
-You may first need to allow the host machine's X11 to be accesible by running `xhost +` (or use xauth).
+   You may first need to allow the host machine's X11 to be accesible by running `xhost +` (or use xauth).
+
+   The container now runs as your current user, and adds the audio group to allow access to ALSA. The current working directory `fbhome/` is mounted as the working directory inside the container `/home/${USER}/`.
 
 ## TODO
 
-Investigate performance optimisations, like multi-core and GPU use during rendering.
+Try and make flowblade and Pulseaudio work together without stopping pulseaudio first.
 
 
 ## Credits

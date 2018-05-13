@@ -2,13 +2,13 @@
 # https://github.com/jliljebl/flowblade
 #
 # Tested with https://github.com/jliljebl/flowblade/releases/download/v1.14/flowblade-1.14.0-1_all.deb
-# 
+#
 
 
 FROM debian:testing
 MAINTAINER Arun Patel <arunsmtp@gmail.com>
 
-ADD https://github.com/jliljebl/flowblade/releases/download/v1.14/flowblade-1.14.0-1_all.deb /flowblade.deb
+ADD https://github.com/jliljebl/flowblade/releases/download/v1.16/flowblade-1.16.0-1_all.deb /flowblade.deb
 
 RUN apt-get update && apt-get install -y \
       --no-install-recommends \
@@ -25,4 +25,3 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /workdir
 
 ENTRYPOINT ["/usr/bin/flowblade"]
-
